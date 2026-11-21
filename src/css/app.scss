@@ -1,0 +1,132 @@
+:root {
+  --sp-bg: #fff8f3;
+  --sp-card: #ffffff;
+  --sp-radius: 20px;
+  --sp-shadow: 0 6px 24px rgba(255, 122, 69, 0.12);
+  --sp-shadow-hover: 0 12px 32px rgba(255, 122, 69, 0.22);
+  --sp-gradient: linear-gradient(135deg, #ff7a45 0%, #ff4d6d 100%);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body {
+  font-family: 'Prompt', sans-serif;
+  background: var(--sp-bg);
+  color: #2b2320;
+  line-height: 1.6;
+}
+
+body.body--dark {
+  --sp-bg: #1c1715;
+  --sp-card: #2a2320;
+  --sp-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  color: #f5ece6;
+}
+
+.q-btn,
+.q-field,
+.q-item,
+.q-tab {
+  font-family: 'Prompt', sans-serif;
+}
+
+.q-btn {
+  border-radius: 14px;
+  text-transform: none;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.q-btn:hover {
+  transform: translateY(-1px);
+}
+
+.sp-card {
+  background: var(--sp-card);
+  border-radius: var(--sp-radius);
+  box-shadow: var(--sp-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sp-shadow-hover);
+}
+
+.sp-gradient-btn {
+  background: var(--sp-gradient) !important;
+  color: white !important;
+}
+
+.sp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* เว้นระยะจาก navbar ให้ทุกหน้า */
+.q-page-container {
+  padding-top: 84px !important;
+}
+
+@media (max-width: 599px) {
+  .q-page-container {
+    padding-top: 128px !important;
+  }
+}
+
+/* ===================== Animations ===================== */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.fade-up {
+  animation: fade-up 0.55s var(--ease) backwards;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.list-enter-active,
+.list-leave-active,
+.list-move {
+  transition: all 0.45s var(--ease);
+}
+.list-enter-from {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(40px);
+}
+.list-leave-active {
+  position: absolute;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
